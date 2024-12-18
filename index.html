@@ -7,9 +7,20 @@
 </head>
 <body>
   <h1>Test</h1>
+  <video id="video" width="360" height="280" autoplay muted playsinline></video>
 
   <script>
-    navigator.mediaDevices.getUserMedia({ video: true });
+    // Запрашиваем доступ к камере
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        // Получаем элемент video по его id
+        const video = document.getElementById('video');
+        // Привязываем поток камеры к элементу video
+        video.srcObject = stream;
+      })
+      .catch(function(error) {
+        console.error('Ошибка доступа к камере:', error);
+      });
   </script>
 </body>
 </html>
