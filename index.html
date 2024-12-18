@@ -11,7 +11,7 @@
 
   <script>
     // Запрашиваем доступ к камере
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
       .then(function(stream) {
         // Получаем элемент video по его id
         const video = document.getElementById('video');
